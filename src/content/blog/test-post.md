@@ -4,8 +4,8 @@ pubDate: 2024-11-20
 description: "A project exploring adaptive deception logic using Docker, MITRE mapping, and automation"
 tags: [honeypot, APT, deception, ai]
 author: Mitch
+heroImage: '../../assets/blog-placeholder-3.jpg'
 ---
-
 ## Summary
 
 This project explores...
