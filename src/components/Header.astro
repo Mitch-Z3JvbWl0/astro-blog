@@ -5,10 +5,9 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-	<button id="dark-toggle" aria-label="Toggle Dark Mode">🌓</button>
 	<h2 class="flex items-center space-x-2">
   	<a href="/" style="display: flex; align-items: center; gap: 0.5em;">
-    <img src="../src/assets/grom+logo.png" alt="Grom-Lab Logo" style="height: 32px; width: 32px; border-radius: 50%;" />
+    <img src="/images/grom+logo.png" alt="Grom-Lab Logo" style="height: 32px; width: 32px; border-radius: 50%;" />
     <span>{SITE_TITLE}</span>
   </a>
 </h2>
@@ -76,12 +75,4 @@ import { SITE_TITLE } from '../consts';
 		}
 	}
 </style>
-<script>
-  const toggle = document.getElementById("dark-toggle");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (prefersDark) document.documentElement.classList.add("dark");
 
-  toggle?.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-  });
-</script>
