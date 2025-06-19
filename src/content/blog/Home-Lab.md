@@ -11,28 +11,17 @@ heroImage: '../../assets/homelab.png'
 Welcome to my home lab environment! This page serves as a documentation hub for my personal home lab setup. Feel free to explore the hardware, software, and configurations that make up my lab.
 
 ## Table of Contents
-
 -   [Overview](#Overview)
-    
 -   [Network and Servers](#Network-and-Servers)
-    
 -   [Network Diagram](Network-Diagram)
-    
 -   [Virtualization](Virtualization)
-    
 -   [Services and Applications](https://gromits-lab.squarespace.com/projects/home-lab#services-and-applications)
-    
 -   [Configuration Scripts](Services-and-Applications)
-    
 -   [Resources](#resources)
-    
 -   [High Priority Tasks](#high-priority-tasks)
-    
 -   [Medium Priority Tasks](#medium-priority-tasks)
-    
 -   [Low Priority Tasks](#low-priority-tasks)
     
-
 ## Overview
 
 **Real-World Attack Simulations:** Understanding the power of penetration testing as I replicate authentic attack vectors. Understand vulnerabilities and the importance of proactive defense.
