@@ -49,6 +49,11 @@ const posts = (await getCollection('blog')).sort(
     font-weight: bold;
     margin: 0 0 0.25rem 0;
     color: rgb(var(--black));
+    text-decoration: none; /* ✅ Remove underline from h2 */
+  }
+
+  .post-content a {
+    text-decoration: none; /* ✅ Remove underline from links */
   }
 
   .post-date {
@@ -86,6 +91,7 @@ const posts = (await getCollection('blog')).sort(
 
   .post-item a:hover .post-title {
     color: rgb(var(--accent));
+    text-decoration: none; /* ✅ Prevent underline on hover */
   }
 
   @media (max-width: 720px) {
@@ -117,7 +123,6 @@ const posts = (await getCollection('blog')).sort(
             <FormattedDate date={post.data.pubDate} />
           </p>
           <p class="post-summary">{post.data.description}</p>
-          {/* Tags property does not exist on post.data, so this block is removed */}
           <a href={`/blog/${post.id}/`} class="read-more">Read more →</a>
         </div>
       </div>
