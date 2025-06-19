@@ -1,43 +1,47 @@
 ---
 import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
 
-const posts = await getCollection('blog');
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
-<section class="blog-grid">
+<ul class="blog-grid">
   {posts.map(post => (
-    <a href={`/blog/${post.id}`} class="blog-tile">
-      <h3>{post.data.title}</h3>
-      <p>{post.data.description}</p>
-      <span>{new Date(post.data.pubDate).toLocaleDateString()}</span>
-    </a>
+    <li>
+      <a href={`/blog/${post.id}/`}>
+        {post.data.heroImage && (
+          <img src={post.data.heroImage.src} alt={post.data.title} class="hero-image" />
+        )}
+        <h3>{post.data.title}</h3>
+        <p><FormattedDate date={post.data.pubDate} /></p>
+      </a>
+    </li>
   ))}
-</section>
+</ul>
 
 <style>
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+  .blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+  }
 
-.blog-tile {
-  padding: 1rem;
-  border: 1px solid rgba(100, 100, 100, 0.2);
-  border-radius: 8px;
-  text-decoration: none;
-  color: inherit;
-  background: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+  .blog-grid li {
+    width: calc(50% - 1rem);
+  }
 
-.blog-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+  .blog-grid img.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
 
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
     .blog-grid li {
       width: 100%;
     }
