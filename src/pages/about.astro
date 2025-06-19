@@ -3,7 +3,12 @@ import Layout from '../layouts/BlogPost.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import ProfilePic from '../assets/profile.jpg'; // Replace with your own photo
 ---
-
+<Layout
+  title="About"
+  description="About Gromit's Lab and Mitch"
+  pubDate={new Date('2025-06-19')}
+ 
+>
   <style>
     .about-container {
       max-width: 800px;
