@@ -8,23 +8,45 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<main class="max-w-5xl mx-auto px-4 py-16">
-<!-- Hero Section with Icon and Title Side by Side -->
-<div class="flex justify-center items-center gap-4 my-10">
-  <div class="h-16 w-16 rounded-full overflow-hidden border-4 border-gray-300 shadow">
-    <img src="/images/grom+logo.png" alt="Gromit Lab Icon" class="h-full w-full object-cover" />
-  </div>
-  <h1 class="text-3xl font-bold">Gromit's Lab</h1>
-</div>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    
+    <!-- Your custom styles here -->
+    <style>
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
 
-			<BlogGrid />
-		</main>
-		<Footer />
-	</body>
+      .hero-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 3px solid #ccc;
+        object-fit: cover;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+
+      .hero-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="hero">
+        <img src="/images/grom+logo.png" alt="Gromit Lab Icon" class="hero-icon" />
+        <h1 class="hero-title">Gromit's Lab</h1>
+      </section>
+
+      <BlogGrid />
+    </main>
+    <Footer />
+  </body>
 </html>
