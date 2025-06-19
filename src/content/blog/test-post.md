@@ -6,18 +6,14 @@ tags: [KQL, Threat Hunting, Mail Bomb]
 author: Mitch
 heroImage: '../../assets/mail.jpg'
 ---
-# Defending Against Mail Bomb Attacks with KQL & Automation
 
 Mail bombs (email flooding attacks) are a simple but highly disruptive threat. Attackers send large volumes of email to one or more mailboxes to disrupt regular business communications, fill up quotas and delay legitimate email, conceal targeted phishing attempts and degrade mail server or security tool performance.
 
 In this post, we’ll cover:
 
 - Practical KQL queries to detect potential mail bombs
-    
 - How to tune alerts to reduce noise
-    
 - Power Automate and Defender recommendations for response
-    
 - Sample scripts and automation ideas
     
 
@@ -26,44 +22,47 @@ In this post, we’ll cover:
 Typical signs of mail bombing include:
 
 - Sudden spike in emails to one recipient in a short window
-    
 - Large volumes from a single sender or domain
-    
 - Burst patterns (e.g. 100 emails in 5 minutes)
-    
 - Emails from "noreply" addresses
-    
 - Randomised sender addresses from the same IP range
     
 
 ### Query 1: Spike Detection - Single Recipient
 
+```kql
 EmailEvents
 | where Timestamp > ago(30m)
 | summarize EmailCount=count() by RecipientEmailAddress
 | where EmailCount > 50
 | project RecipientEmailAddress, EmailCount
+```
 
 ### Query 2: Burst of Noreply Emails to a User (NRT-compatible)
 
+```kql
 EmailEvents
 | where Timestamp > ago(15m) 
 | where SenderFromAddress has "noreply" 
 | summarize UniqueSenders=dcount(SenderFromAddress), TotalEmails=count() by RecipientEmailAddress 
 | where TotalEmails > 20 
 | project RecipientEmailAddress, TotalEmails, UniqueSenders, Timestamp
+```
 
 ### Query 3: Domain-based Sender Spike
 
+```kql
 EmailEvents 
 | extend SenderDomain = tostring(split(SenderFromAddress, "@")[1]) 
 | where Timestamp > ago(1h) 
 | summarize EmailsFromDomain=count() by SenderDomain, RecipientEmailAddress 
 | where EmailsFromDomain > 100 
 | project SenderDomain, RecipientEmailAddress, EmailsFromDomain
+```
 
 ### Query 4 (Advanced): Sliding Window Spike Detection
 
+```kql
 let windowSize = 5m; EmailEvents 
 | where Timestamp > ago(1h) 
 | summarize EmailCount=count() by bin(Timestamp, windowSize), RecipientEmailAddress 
@@ -72,6 +71,7 @@ let windowSize = 5m; EmailEvents
 | extend SpikeDetected = EmailCount > (PreviousCount * 3) and EmailCount > 50 
 | where SpikeDetected == true 
 | project Timestamp, RecipientEmailAddress, EmailCount, PreviousCount
+```
 
 This detects sudden tripling of message volume per recipient across sliding 5-minute windows.  
 
@@ -80,23 +80,16 @@ This detects sudden tripling of message volume per recipient across sliding 5-mi
 ### Automated Alerting
 
 - Use scheduled rules in Defender for Office 365 or Sentinel
-    
 - Tune thresholds by mailbox sensitivity (VIP users < general users < shared mailboxes)
-    
 - Whitelist internal tools and known systems
     
-
 ### Power Automate Ideas
 
 - Auto-move detected mail bomb messages to Junk or Quarantine
-    
 - Throttle auto-forwarding
-    
 - Disable inbox rules temporarily
-    
 - Notify SOC team for deeper analysis
     
-
 ## Power Automate Flow Example
 
 ### Trigger:
@@ -106,15 +99,13 @@ This detects sudden tripling of message volume per recipient across sliding 5-mi
 ### Actions:
 
 - Get alert details → Extract affected RecipientEmailAddress
-    
 - Call Microsoft Graph API to move messages to Junk
-    
 - Post notification to Teams SOC channel
-    
 
 ### Pseudocode for Graph API action (Power Automate HTTP Request):
-
+```http
 POST /users/{user-id}/mailFolders/inbox/messages/{message-id}/move Body: { "destinationId": "junkemail" }
+```
 
 You can loop through detected messages with the Graph API connector.
 
@@ -157,13 +148,9 @@ let window = 5m; EmailEvents
 ## Hardening Recommendations
 
 - Block auto-forwarding externally (Defender / Transport Rules)
-    
 - Apply DMARC, SPF, DKIM strictly
-    
 - Implement inbound throttling per sender / IP
-    
 - Monitor for mailbox rule abuse (common in mail bombs)
-    
 - Educate VIP users to report any flood of unexpected emails
     
 
