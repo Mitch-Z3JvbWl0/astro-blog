@@ -4,7 +4,7 @@ pubDate: 2025-06-19
 description: "A collection of KQL queries, scripts, and automation tips to help detect and mitigate mail bomb attacks in Microsoft 365 environments."
 tags: [Home Lab]
 author: Mitch
-heroImage: '../../assets/.jpg'
+heroImage: '../../assets/homelab.png'
 ---
 
 
