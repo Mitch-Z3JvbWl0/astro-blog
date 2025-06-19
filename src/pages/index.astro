@@ -6,19 +6,33 @@ import BlogGrid from '../components/BlogGrid.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🔬 Grom-Lab: Cybersecurity Research, Labs, & Ideas</h1>
-			<p>Follow my experiments in security automation, honeypots, APT simulation, and more.</p>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <Header />
 
-			<BlogGrid />
-		</main>
-		<Footer />
-	</body>
+    <main class="mx-auto max-w-4xl px-4 py-12">
+      <!-- Hero Section -->
+      <section class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">{SITE_TITLE}</h1>
+        <p class="text-xl text-gray-700 mb-6">{SITE_DESCRIPTION}</p>
+        <a
+          href="/blog"
+          class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+        >
+          Read Latest Projects
+        </a>
+      </section>
+
+      <!-- Featured Posts -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold mb-4">Latest Projects</h2>
+        <BlogGrid />
+      </section>
+    </main>
+
+    <Footer />
+  </body>
 </html>
