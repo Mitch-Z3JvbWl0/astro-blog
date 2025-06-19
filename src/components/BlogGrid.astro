@@ -18,8 +18,10 @@ const posts = (await getCollection('blog')).sort(
   .post-item {
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
   }
 
   .post-image {
@@ -52,12 +54,34 @@ const posts = (await getCollection('blog')).sort(
   .post-date {
     font-size: 0.9rem;
     color: rgb(var(--gray));
-    margin: 0;
+    margin: 0 0 0.5rem 0;
   }
 
-  .post-item a {
-    text-decoration: none;
-    color: inherit;
+  .post-summary {
+    font-size: 1rem;
+    color: #444;
+    margin: 0.5rem 0;
+  }
+
+  .post-tags {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  .post-tags span {
+    background-color: #eee;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: #007acc;
+    text-decoration: underline;
   }
 
   .post-item a:hover .post-title {
@@ -92,6 +116,9 @@ const posts = (await getCollection('blog')).sort(
           <p class="post-date">
             <FormattedDate date={post.data.pubDate} />
           </p>
+          <p class="post-summary">{post.data.description}</p>
+          {/* Tags property does not exist on post.data, so this block is removed */}
+          <a href={`/blog/${post.id}/`} class="read-more">Read more →</a>
         </div>
       </div>
     ))
