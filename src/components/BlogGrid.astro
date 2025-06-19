@@ -9,41 +9,43 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <style>
-  .grid-container {
-    max-width: 960px;
+  .post-list {
+    max-width: 720px;
     margin: 0 auto;
     padding: 2rem 1rem;
   }
 
-  .post-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
   .post-item {
-    width: calc(50% - 1rem);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
   }
 
-  .post-item img {
+  .post-image {
+    width: 200px;
+    height: 120px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .post-image img {
     width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 0.5rem;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
   }
 
-  .post-item a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  .post-content {
+    flex-grow: 1;
   }
 
   .post-title {
     font-size: 1.25rem;
-    margin: 0.25rem 0;
+    font-weight: bold;
+    margin: 0 0 0.25rem 0;
     color: rgb(var(--black));
   }
 
@@ -53,38 +55,45 @@ const posts = (await getCollection('blog')).sort(
     margin: 0;
   }
 
-  .post-item a:hover .post-title,
-  .post-item a:hover .post-date {
-    color: rgb(var(--accent));
+  .post-item a {
+    text-decoration: none;
+    color: inherit;
   }
 
-  .post-item a:hover img {
-    box-shadow: var(--box-shadow);
+  .post-item a:hover .post-title {
+    color: rgb(var(--accent));
   }
 
   @media (max-width: 720px) {
     .post-item {
+      flex-direction: column;
+    }
+
+    .post-image {
       width: 100%;
+      height: 180px;
     }
   }
 </style>
 
-<section class="grid-container">
-  <ul class="post-grid">
-    {
-      posts.map(post => (
-        <li class="post-item">
+<section class="post-list">
+  {
+    posts.map(post => (
+      <div class="post-item">
+        <a href={`/blog/${post.id}/`} class="post-image">
+          {post.data.heroImage && (
+            <Image src={post.data.heroImage} width={720} height={360} alt={post.data.title} />
+          )}
+        </a>
+        <div class="post-content">
           <a href={`/blog/${post.id}/`}>
-            {post.data.heroImage && (
-              <Image width={720} height={360} src={post.data.heroImage} alt={post.data.title} />
-            )}
-            <h4 class="post-title">{post.data.title}</h4>
-            <p class="post-date">
-              <FormattedDate date={post.data.pubDate} />
-            </p>
+            <h2 class="post-title">{post.data.title}</h2>
           </a>
-        </li>
-      ))
-    }
-  </ul>
+          <p class="post-date">
+            <FormattedDate date={post.data.pubDate} />
+          </p>
+        </div>
+      </div>
+    ))
+  }
 </section>
