@@ -1,6 +1,6 @@
 ---
 title: "Adaptive Honeypot with AI-Guided Deception"
-pubDate: 2024-11-20
+pubDate: 2025-06-19
 description: "A project exploring adaptive deception logic using Docker, MITRE mapping, and automation"
 tags: [honeypot, APT, deception, ai]
 author: Mitch
