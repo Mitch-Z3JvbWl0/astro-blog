@@ -14,23 +14,23 @@ Welcome to my home lab environment! This page serves as a documentation hub for 
 
 -   [Overview](#Overview)
     
--   [Network and Servers](#Overview)
+-   [Network and Servers](#Network-and-Servers)
     
--   [Network Diagram](https://gromits-lab.squarespace.com/projects/home-lab#network-diagram)
+-   [Network Diagram](Network-Diagram)
     
--   [Virtualization](https://gromits-lab.squarespace.com/projects/home-lab#virtualization)
+-   [Virtualization](Virtualization)
     
 -   [Services and Applications](https://gromits-lab.squarespace.com/projects/home-lab#services-and-applications)
     
--   [Configuration Scripts](https://gromits-lab.squarespace.com/projects/home-lab#configuration-scripts)
+-   [Configuration Scripts](Services-and-Applications)
     
--   [Resources](https://gromits-lab.squarespace.com/projects/home-lab#resources)
+-   [Resources](#resources)
     
--   [High Priority Tasks](https://gromits-lab.squarespace.com/projects/home-lab#high-priority-tasks)
+-   [High Priority Tasks](#high-priority-tasks)
     
--   [Medium Priority Tasks](https://gromits-lab.squarespace.com/projects/home-lab#medium-priority-tasks)
+-   [Medium Priority Tasks](#medium-priority-tasks)
     
--   [Low Priority Tasks](https://gromits-lab.squarespace.com/projects/home-lab#low-priority-tasks)
+-   [Low Priority Tasks](#low-priority-tasks)
     
 
 ## Overview
@@ -50,172 +50,96 @@ Welcome to my home lab environment! This page serves as a documentation hub for 
 ## Network and Servers
 
 Here’s a list of the components that form the backbone of my home lab:
-
 -   **Server Host:** Optiplex 7040 SFF, i5-6500, 16GB RAM, 256GB SSD, Hostname: UKHOST01, OS: Proxmox
-    
 -   **Workstation:** 16GB RAM, 1TB Storage. Hostname: PC01, OS: Windows 11.
-    
 -   **Network Switch:** NETGEAR 5 Port Gigabit Network Switch (GS105) & Virtual switch via host.
-    
 -   **Firewall:** Virtual OPNsense.
-    
 -   **Storage Array:** Onboard storage via Host. Exploring NAS options.
-    
 -   **Malware Analysis:** Remnux/Cuckoo
-    
 -   **Additional Hardware:** I plan to extend my homelab with additional hardware, likely to explore Optiplex form factor options to host the vuln lab.
-    
 
 ## Network Diagram
 
 ![](https://images.squarespace-cdn.com/content/v1/678d21799e3bc922e13a1cf6/48f7f0cc-55e4-443f-9deb-6e6c2865b4ff/HomeLab_v4.1+%281%29.png)
 
 ## Virtualization
-
 -   **Hypervisor:** Proxmox.
-    
 -   **Templates:** Badblood - Domain Controller
-    
 
 ## Services and Applications
-
 -   **Domain Controller:** BadBlood to populate [https://github.com/davidprowe/BadBlood](https://github.com/davidprowe/BadBlood). Also look at BloodHound for attack paths.
-    
 -   **DNS Server:** Domain Controller will host DNS for Server LAN. Pi-Hole will handle DNS for Home PC but exploring options.
-    
 -   **Web Server:** **TO DO** Find vulnerable web server images.
-    
 -   **Vulnhub Host:** **TO DO** Find Vulnhub images.
-    
 -   **Database Server:** **TO DO** Find vulnerable database images.
-    
 -   **Monitoring Tools:** Currently using: Wazuh. Possibilities: Zeek, Suricata, The Elastic Stack.
     
-
 ## Configuration Scripts
-
 Any automation scripts or configuration files to set up my lab environment:
-
 -   **Provisioning Script:** Link to provisioning script
-    
 -   **Network Configuration:** Link to network configuration files
-    
 -   **Active Directory population:** [https://github.com/davidprowe/BadBlood](https://github.com/davidprowe/BadBlood)
-    
 
 ## Resources
 
 Provide links to external resources, guides, or tutorials that have helped me set up and maintain my home lab:
-
 -   [AD population](https://github.com/davidprowe/BadBlood)
-    
 -   [Home Lab Inspiration](https://www.notra-sec.com/blog/my-home-lab-setup)
-    
 -   [Network Monitoring Tool](https://zeek.org/)
-    
 -   [John Hammond Virtual Environment](https://www.youtube.com/watch?v=pKtDQtsubio)
-    
 -   [VulnHub](https://www.vulnhub.com/entry/vulnerable-pentesting-lab-environment-1,737/)
-    
 -   [Wazuh Documentation](https://documentation.wazuh.com/current/index.html)
-    
 -   [Rapid7 Pen Test Lab](https://kb.help.rapid7.com/docs/setting-up-a-penetration-testing-lab)
-    
 -   [Automated labs](https://github.com/AutomatedLab/AutomatedLab)
-    
 -   [Microsoft Sim labs](https://simulandlabs.com/README.html)
-    
 -   [Azure Red Team Attack and Detect Workshop](https://github.com/mandiant/Azure_Workshop)
-    
 -   [Security Onion](https://securityonionsolutions.com/)
-    
 -   [Cyber Security lab example](https://www.accidentalrebel.com/building-my-virtual-cybersecurity-home-lab.html)
-    
 -   [Malware Analysis Software](https://remnux.org/)
-    
 -   [Malware Analysis Lab Enviornment](https://www.ariefprabowo.com/en/malware-analysis-en/personal-notes-building-a-malware-analysis-lab-environment/)
-    
 
 ## High Priority Tasks
-
 -   Configure OPNsense Firewall: Set up basic security policies and NAT to protect the lab.
-    
 -   Implement VLANs: Segregate traffic for different lab segments (Red Team, Vulnerable LAN, Server LAN).
-    
 -   Set Up Wazuh SIEM: Get the SIEM system running for log collection and analysis.
-    
 -   Install and Configure DNS/DHCP Services: Centralize network services management on DC01.
-    
 -   Deploy Windows Server VM with Active Directory: Essential for practicing enterprise network management.
-    
 -   Network Connectivity Verification: Ensure all lab devices can communicate as intended.
-    
 -   IP Address Management: Verify no conflicts and set up DHCP server with proper scope.
-    
 -   Deploy Kali VM: Set up for penetration testing and security research.
-    
 -   Create Metasploitable/Vulnhub VMs: Set up vulnerable LAN for penetration testing practice.
-    
 -   Network File Share: Make accessible to the Server LAN and PC01.
-    
 -   Deploy IT Generic Server.
-    
--   Deploy Win 10 Client PC.
-    
+-   Deploy Win 11 Client PC.
 -   Install Wazuh agents on all VMs.
-    
 
 ## Medium Priority Tasks
-
 -   Install IDS/IPS: Use Snort or Suricata to monitor network for malicious activities, exploring options as a container.
-    
 -   Set Up Vulnerability Scanner: Integrate OpenVAS to identify potential vulnerabilities, exploring options as a container.
-    
 -   Implement Backup Solution: Ensure data redundancy for critical VMs and configurations.
-    
 -   Deploy Network Monitoring Tool: Use Nagios Core or Zabbix for real-time network status.
-    
 -   Integrate Log Management: Incorporate Graylog or ELK Stack for advanced log management.
-    
 -   Malware Lab: Deploy and implement a safe enviornment to detonate malware for analysis.
-    
 -   Deploy dummy data for AD: Using Badblood ([https://github.com/davidprowe/BadBlood](https://github.com/davidprowe/BadBlood)).
     
-
 ## Low Priority Tasks
-
 -   Install Endpoint Detection and Response (EDR): Configure TheHive Project or OSSEC for detailed monitoring and alerting.
-    
 -   Web Application Security: Set up OWASP ZAP or Burp Suite Community Edition for web app testing.
-    
 -   Red Team Tools: Add additional ParrotOS, Kali Linux, BlackArch, or ArchStrike VMs for diverse penetration testing environments.
-    
 -   Set Up Web Application Firewall (WAF): Configure ModSecurity with the OWASP CRS.
     
-
 ## Additional Projects
-
 -   Install Vulnerable Systems: Get VulnHub VMs or set up DVWA for targeted practice.
-    
 -   CTF Challenges: Set up CTFd to host or practice cybersecurity competitions.
-    
 -   Documentation and Wiki: Start a DokuWiki or MediaWiki for documenting lab configurations and procedures.
-    
 -   Physical Lab Security: Ensure the physical security of lab equipment.
-    
 -   Migrate Hosting: Migrate the hosting environment to new hardware and proxmox hyper visor.
-    
 -   VPN: Access lab remotely, configure a VPN on the firewall to ensure secure access.
-    
 -   War Room Scenarios: Set up red team/blue team scenarios within your lab for practical cybersecurity experiences.
-    
 -   Updates and Patch Management: Regularly update and patch all systems, especially the OS running on UKHOST01 and Kali machine.
-    
 -   CIS and Group Policies: Implement Group Policies through Domain Controller to manage security settings across machines.
-    
 -   Penetration Test: Perform a full scope penetration test.
     
-
 # Vulnhub Labs
 
 ## Beginner Level
