@@ -95,7 +95,7 @@ const posts = (await getCollection('blog')).sort(
   <body>
     <Header />
     <main>
-      <h1 style="text-align:center; font-size:2rem; margin-bottom:2rem;">🧠 All Blog Posts</h1>
+      <h1 style="text-align:center; font-size:2rem; margin-bottom:2rem;">All Posts</h1>
       <ul>
         {posts.map((post, index) => (
           <li class={index === 0 ? 'featured' : ''}>
