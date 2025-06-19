@@ -41,7 +41,11 @@ const posts = (await getCollection('blog')).sort(
 				text-align: center;
 			}
 			ul li:first-child img {
-				width: 100%;
+				width: 80%;
+				max-width: 600px;
+				height: auto;
+				margin: 0 auto;
+				display: block;
 			}
 			ul li:first-child .title {
 				font-size: 2.369rem;
