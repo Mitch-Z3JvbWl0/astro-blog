@@ -120,9 +120,13 @@ You can create this flow in Power Automate Cloud.
 **Actions**:
 
 1️⃣ **Compose** — Set RecipientEmailAddress as a variable
+
 2️⃣ **Search messages** using Graph API connector or "List messages" from Outlook: - Filter by RecipientEmailAddress - Filter Timestamp > Alert time window start
+
 3️⃣ **Apply to Each** message: - **Move message** to Junk folder using "Move Email" action
+
 4️⃣ **Post message to Teams** → SOC channel - "Mail Bomb Mitigation triggered for [RecipientEmailAddress]"
+
 5️⃣ **(Optional)** Send an email to SOC / Admin for tracking ---
 
 ## Part 3: Advanced KQL Using Sliding Window
@@ -154,4 +158,4 @@ let window = 5m; EmailEvents
 
 Mail bombs are low-effort but can cause significant operational pain. Fortunately, with solid monitoring and automation, they are easily detected and mitigated.
 
-If you’d like more advanced automation or templates, reach out to me via the [Grom Lab](https://www.grom-lab.com/) contact page!
+
