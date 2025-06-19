@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BlogGrid from '../components/BlogGrid.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -13,10 +14,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
+			<h1>🔬 Grom-Lab: Cybersecurity Research, Labs, & Ideas</h1>
+			<p>Follow my experiments in security automation, honeypots, APT simulation, and more.</p>
 
-  <h1>🔬 Grom-Lab: Cybersecurity Research, Labs, & Ideas</h1>
-  <p>Follow my experiments in security automation, honeypots, APT simulation, and more.</p>
-
+			<BlogGrid />
 		</main>
 		<Footer />
 	</body>

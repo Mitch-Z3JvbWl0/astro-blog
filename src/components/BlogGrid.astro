@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<section class="blog-grid">
+  {posts.map(post => (
+    <a href={`/blog/${post.id}`} class="blog-tile">
+      <h3>{post.data.title}</h3>
+      <p>{post.data.description}</p>
+      <span>{new Date(post.data.pubDate).toLocaleDateString()}</span>
+    </a>
+  ))}
+</section>
+
+<style>
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.blog-tile {
+  padding: 1rem;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+</style>
