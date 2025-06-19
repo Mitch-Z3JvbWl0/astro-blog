@@ -1,21 +1,117 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import ProfilePic from '../assets/profile.jpg'; // Replace with your own photo
 ---
 
 <Layout
-	title="About"
-	description="About"
-	pubDate={new Date('June 19 2025')}
-	heroImage={AboutHeroImage}
+  title="About"
+  description="Learn more about the work behind Gromit's Lab"
+  pubDate={new Date('June 19 2025')}
+  heroImage={AboutHeroImage}
 >
-## Our Mission
 
-Our mission is to share our passion for cybersecurity, statistics, and programming with the community by providing accessible knowledge, innovative projects, and meaningful insights. We strive to empower individuals and organizations to understand the ever-evolving digital landscape, make informed decisions, and tackle challenges with confidence.
+  <style>
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+    }
 
-Through collaboration, education, and exploration, we aim to inspire curiosity, foster growth, and contribute to a more secure and data-driven future.
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
 
-## Meet the team
+    .profile-section img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-We are a team of passionate engineers, researchers, and problem-solvers dedicated to exploring the cutting edge of technology. From cryptography and cybersecurity to data analytics and software development, we work together to innovate, learn, and create solutions that inspire and empower.
+    .bio {
+      flex: 1;
+    }
+
+    .skills, .contact {
+      margin-top: 2rem;
+    }
+
+    .skills ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #007acc;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div class="about-container">
+    <div class="profile-section">
+      <img src="/images/profile.png" alt="Mitch Profile Photo" width="150" height="150" />
+      <div class="bio">
+        <h2>Hi, I'm Mitch</h2>
+        <p>
+          I'm a Cyber Security Engineer and MSc student with a passion for digital forensics,
+          security automation, and applied data science. I created Gromit's Lab to document my research,
+          build open-source tools, and help others navigate the evolving world of cybersecurity.
+        </p>
+      </div>
+    </div>
+
+    <section class="skills">
+      <h3>Skills & Focus Areas</h3>
+      <ul>
+        <li>Security Architecture & Cloud Security (Azure/M365)</li>
+        <li>Threat Detection, SIEM, Honeypots</li>
+        <li>Digital Forensics & Incident Response</li>
+        <li>Python & Data Analysis</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>🎯 Our Mission</h3>
+      <p>
+        Our mission is to share our passion for cybersecurity, statistics, and programming with the community by
+        providing accessible knowledge, innovative projects, and meaningful insights. We strive to empower individuals
+        and organizations to understand the ever-evolving digital landscape, make informed decisions, and tackle
+        challenges with confidence.
+      </p>
+      <p>
+        Through collaboration, education, and exploration, we aim to inspire curiosity, foster growth, and contribute to a more secure and data-driven future.
+      </p>
+    </section>
+
+    <section>
+      <h3>Meet the Team</h3>
+      <p>
+        Gromit's Lab is driven by curious engineers, researchers, and tinkerers working across cybersecurity, data, and software development. 
+        Our goal is to build projects that make a real impact and share what we learn along the way.
+      </p>
+    </section>
+
+    <section class="contact">
+      <h3>📬 Contact & Connect</h3>
+      <a href="https://www.linkedin.com/in/mitch-hart-cybersec" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Mitch-Z3JvbWl0" target="_blank">GitHub</a>
+      <a href="mailto:mitch@grom-lab.com">Email</a> <!-- Update this -->
+    </section>
+  </div>
+
 </Layout>
