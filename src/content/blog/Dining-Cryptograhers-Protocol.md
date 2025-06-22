@@ -94,11 +94,6 @@ A = aW ⊕ aG ⊕ aF
 
 No one knows **who**, because shared bits obscure the `mX`.
 
----
-
-## Hero Diagram
-
-![Hero Illustration of Dining Cryptographers Protocol] (./A_flat_digital_illustration_depicts_three_cryptogr.png)
 
 ---
 
