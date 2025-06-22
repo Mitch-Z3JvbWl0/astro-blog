@@ -8,7 +8,7 @@ heroImage: '../../assets/homelab.png'
 ---
 
 
-# 🔐 Understanding Authentication in Security Protocols
+# Understanding Authentication in Security Protocols
 
 Authentication is a cornerstone of secure communications — but *not all authentication guarantees the same thing*. In this post, we break down the three primary types:
 
@@ -20,7 +20,7 @@ We'll walk through simple protocol examples, explain what guarantees they provid
 
 ---
 
-## 📘 Quick Definitions
+## Quick Definitions
 
 | Type | What You're Looking For |
 |------|--------------------------|
@@ -30,7 +30,7 @@ We'll walk through simple protocol examples, explain what guarantees they provid
 
 ---
 
-## ✅ Example 1: Aliveness
+## Example 1: Aliveness
 
 ### Protocol A
 ```text
@@ -38,7 +38,7 @@ We'll walk through simple protocol examples, explain what guarantees they provid
 2. B → A: {Na}KAB
 ```
 
-### 🔁 Flowchart
+### Flowchart
 ```mermaid
 sequenceDiagram
     participant A
@@ -47,16 +47,16 @@ sequenceDiagram
     B->>A: {Na}KAB
 ```
 
-### 🔍 Analysis
+### Analysis
 - A receives `{Na}` encrypted with shared key `KAB`.
 - ✅ A learns B is alive and knows `KAB`.
 - ❌ B doesn’t authenticate A.
 
-**🔐 Authentication Type: Aliveness (A about B)**
+**Authentication Type: Aliveness (A about B)**
 
 ---
 
-## 🔁 Example 2: Mutual Communication
+## Example 2: Mutual Communication
 
 ### Protocol B
 ```text
@@ -65,7 +65,7 @@ sequenceDiagram
 3. A → B: {Nb}KAB
 ```
 
-### 🔁 Flowchart
+### Flowchart
 ```mermaid
 sequenceDiagram
     participant A
@@ -75,15 +75,15 @@ sequenceDiagram
     A->>B: {Nb}KAB
 ```
 
-### 🔍 Analysis
+### Analysis
 - Each party sends and verifies a fresh nonce.
 - Both know the other is involved in the session.
 
-**🔐 Authentication Type: Mutual Communication**
+**Authentication Type: Mutual Communication**
 
 ---
 
-## 🔒 Example 3: Data Agreement
+## Example 3: Data Agreement
 
 ### Protocol C
 ```text
@@ -92,7 +92,7 @@ sequenceDiagram
 3. A → B: {Kab}KAB
 ```
 
-### 🔁 Flowchart
+### Flowchart
 ```mermaid
 sequenceDiagram
     participant A
@@ -102,16 +102,16 @@ sequenceDiagram
     A->>B: {Kab}KAB
 ```
 
-### 🔍 Analysis
+###  Analysis
 - B proposes a new session key `Kab`.
 - A accepts and confirms it.
 - ✅ They both agree on `Kab` and know the other agrees.
 
-**🔐 Authentication Type: Data Agreement**
+** Authentication Type: Data Agreement**
 
 ---
 
-## ❌ Example 4: Replay Attack Vulnerability
+##  Example 4: Replay Attack Vulnerability
 
 ### Protocol X
 ```text
@@ -132,7 +132,7 @@ sequenceDiagram
     A->>B: {Message}KAB
 ```
 
-### 🛠️ Flaw
+### Flaw
 - An attacker can replay a full session.
 - B has no way to check if the message is fresh.
 
@@ -146,7 +146,7 @@ This binds the final message to the current session.
 
 ---
 
-## 📌 Summary Table
+## Summary Table
 
 | Protocol | Authentication |
 |----------|----------------|
@@ -157,7 +157,7 @@ This binds the final message to the current session.
 
 ---
 
-## 🧠 Final Thoughts
+## Final Thoughts
 
 When reviewing or designing protocols, always ask:
 1. Who proves they’re alive?
