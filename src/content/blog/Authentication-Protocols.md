@@ -163,7 +163,6 @@ LDAP by itself is a directory lookup protocol. Authentication is often done via:
 
 - Simple Bind (plaintext — insecure unless wrapped in TLS)
 - SASL Bind or Kerberos-backed
-
 - ❌ No built-in cryptographic challenge
 - ⚠️ Use with LDAPS or external auth
 
