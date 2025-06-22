@@ -1,7 +1,7 @@
 ---
 title: "A Modern Cryptographic Variant of the Dining Cryptographers Protocol"
 description: "Anonymity meets accountability: A verifiable solution to the Dining Cryptographers Problem using public-key cryptography."
-pubDate: 2025-06-22
+pubDate: 2025-06-23
 tags: ["cryptography", "protocols", "privacy", "non-repudiation", "anonymity"]
 heroImage: "../../assets/dining.png"
 ---
