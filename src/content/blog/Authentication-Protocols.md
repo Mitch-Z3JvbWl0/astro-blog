@@ -163,7 +163,7 @@ Let's now tie the theory of aliveness, mutual communication, and data agreement 
 
 ---
 
-### 🔐 NTLM (Windows Challenge-Response)
+### NTLM (Windows Challenge-Response)
 
 ```mermaid
 sequenceDiagram
@@ -182,7 +182,7 @@ sequenceDiagram
 
 ---
 
-### 🔐 Kerberos (Ticket-Based Authentication)
+### Kerberos (Ticket-Based Authentication)
 
 ```mermaid
 sequenceDiagram
@@ -208,7 +208,7 @@ sequenceDiagram
 
 ---
 
-### 🔐 LDAP (Lightweight Directory Access Protocol)
+### LDAP (Lightweight Directory Access Protocol)
 
 LDAP by itself is a directory lookup protocol. Authentication is often done via:
 
@@ -220,7 +220,7 @@ LDAP by itself is a directory lookup protocol. Authentication is often done via:
 
 ---
 
-### 🔐 RADIUS (Remote Authentication Dial-In User Service)
+### RADIUS (Remote Authentication Dial-In User Service)
 
 ```mermaid
 sequenceDiagram
@@ -240,7 +240,7 @@ sequenceDiagram
 
 ---
 
-## 📊 Comparison Table
+## Comparison Table
 
 | Protocol | Aliveness | Mutual | Data Agreement | Notes |
 |----------|-----------|--------|----------------|-------|
@@ -251,7 +251,7 @@ sequenceDiagram
 
 ---
 
-## 🔗 Further Reading & Tools
+## Further Reading & Tools
 
 - [RFC 4120 - Kerberos V5](https://datatracker.ietf.org/doc/html/rfc4120)
 - [Wireshark NTLM & Kerberos Filters](https://wiki.wireshark.org/Kerberos)
