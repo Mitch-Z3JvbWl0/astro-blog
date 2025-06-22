@@ -4,7 +4,7 @@ pubDate: 2025-06-22
 description: "Learn the differences between Aliveness, Mutual Communication, and Data Agreement with illustrated examples and protocol flows."
 tags: [Cryptography]
 author: Mitch
-heroImage: '../../assets/homelab.png'
+heroImage: '../../assets/Auth.png'
 ---
 
 
@@ -107,7 +107,7 @@ sequenceDiagram
 - A accepts and confirms it.
 - ✅ They both agree on `Kab` and know the other agrees.
 
-** Authentication Type: Data Agreement**
+**Authentication Type: Data Agreement**
 
 ---
 
