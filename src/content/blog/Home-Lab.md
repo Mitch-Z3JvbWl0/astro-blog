@@ -1,14 +1,12 @@
 ---
 title: "Home Lab"
 pubDate: 2025-06-19
-description: "A collection of KQL queries, scripts, and automation tips to help detect and mitigate mail bomb attacks in Microsoft 365 environments."
+description: "Welcome to my home lab environment! This page serves as a documentation hub for my personal home lab setup. Feel free to explore the hardware, software, and configurations that make up my lab."
 tags: [Home Lab]
 author: Mitch
 heroImage: '../../assets/homelab.png'
 ---
 
-
-Welcome to my home lab environment! This page serves as a documentation hub for my personal home lab setup. Feel free to explore the hardware, software, and configurations that make up my lab.
 
 ## Table of Contents
 -   [Overview](#Overview)
