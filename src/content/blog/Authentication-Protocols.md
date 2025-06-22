@@ -38,13 +38,7 @@ We'll walk through simple protocol examples, explain what guarantees they provid
 ```
 
 ### Flowchart
-```mermaid
-sequenceDiagram
-    participant A
-    participant B
-    A->>B: A, Na
-    B->>A: {Na}KAB
-```
+![example1](../../assets/example1.png)
 
 ### Analysis
 - A receives `{Na}` encrypted with shared key `KAB`.
@@ -65,14 +59,7 @@ sequenceDiagram
 ```
 
 ### Flowchart
-```mermaid
-sequenceDiagram
-    participant A
-    participant B
-    A->>B: A, Na
-    B->>A: {Na, Nb}KAB
-    A->>B: {Nb}KAB
-```
+![example2](../../assets/example2.png)
 
 ### Analysis
 - Each party sends and verifies a fresh nonce.
@@ -92,14 +79,7 @@ sequenceDiagram
 ```
 
 ### Flowchart
-```mermaid
-sequenceDiagram
-    participant A
-    participant B
-    A->>B: A, Na
-    B->>A: {Na, Kab}KAB
-    A->>B: {Kab}KAB
-```
+![example3](../../assets/example3.png)
 
 ### Analysis
 - B proposes a new session key `Kab`.
@@ -121,15 +101,7 @@ sequenceDiagram
 ```
 
 ### Flowchart
-```mermaid
-sequenceDiagram
-    participant A
-    participant B
-    A->>B: A, Na
-    B->>A: {Na, Nb}KAB
-    A->>B: {Nb}KAB
-    A->>B: {Message}KAB
-```
+![example4](../../assets/example4.png)
 
 ### Flaw
 - An attacker can replay a full session.
@@ -165,15 +137,7 @@ Let's now tie the theory of aliveness, mutual communication, and data agreement 
 
 ### NTLM (Windows Challenge-Response)
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
-    C->>S: Username
-    S->>C: Challenge (nonce)
-    C->>S: Response = H(nonce, password)
-    S->>C: Success/Failure
-```
+![example-ntlm](../../assets/example-ntlm.png)
 
 - ✅ Aliveness (Server verifies the client)
 - ❌ No mutual communication
@@ -184,22 +148,7 @@ sequenceDiagram
 
 ### Kerberos (Ticket-Based Authentication)
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant AS as Auth Server
-    participant TGS as Ticket Granting Server
-    participant S as Service
-
-    C->>AS: Request TGT (A, TGS, timestamp)
-    AS->>C: TGT + session key (encrypted with C's secret)
-
-    C->>TGS: Request service ticket using TGT
-    TGS->>C: Service ticket + new session key
-
-    C->>S: {Auth data} using session key
-    S->>C: Auth OK
-```
+![example-kerberos](../../assets/example-kerberos.png)
 
 - ✅ Aliveness
 - ✅ Mutual Communication
@@ -222,17 +171,7 @@ LDAP by itself is a directory lookup protocol. Authentication is often done via:
 
 ### RADIUS (Remote Authentication Dial-In User Service)
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant NAS as Access Server
-    participant S as RADIUS Server
-
-    C->>NAS: Login request
-    NAS->>S: {Username, credentials}
-    S->>NAS: Access Accept/Reject
-    NAS->>C: Allow/Deny
-```
+![example-radius](../../assets/example-radius.png)
 
 - ✅ Aliveness (of client)
 - ❌ No mutual authentication unless extended via EAP
