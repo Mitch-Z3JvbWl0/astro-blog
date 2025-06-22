@@ -3,9 +3,39 @@ import { getCollection } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { Image } from 'astro:assets';
 
+// Extend the type to include optional 'tags'
+type BlogFrontmatter = {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  tags?: string[];
+};
+
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+) as { id: string; data: BlogFrontmatter }[];
+
+// Ensure each post has a tags array (fallback to empty array if missing)
+posts.forEach(post => {
+  if (!Array.isArray(post.data.tags)) {
+    post.data.tags = [];
+  }
+});
+
+// Pagination logic (adjust per-page as needed)
+const perPage = 5;
+const page = Number(Astro.url.searchParams.get('page')) || 1;
+const start = (page - 1) * perPage;
+const end = start + perPage;
+const paginatedPosts = posts.slice(start, end);
+const hasMore = posts.length > end;
 ---
 
 <style>
@@ -69,16 +99,23 @@ const posts = (await getCollection('blog')).sort(
   }
 
   .post-tags {
-    font-size: 0.875rem;
-    color: #666;
-    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  .post-tags span {
-    background-color: #eee;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    margin-right: 0.4rem;
+  .post-tags a {
+    background-color: #eef;
+    color: #0366d6;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  .post-tags a:hover {
+    background-color: #ddeeff;
   }
 
   .read-more {
@@ -91,6 +128,23 @@ const posts = (await getCollection('blog')).sort(
   .post-item a:hover .post-title {
     color: rgb(var(--accent));
     text-decoration: none;
+  }
+
+  .load-more {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .load-more a {
+    background-color: #007acc;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .load-more a:hover {
+    background-color: #005fa3;
   }
 
   @media (max-width: 720px) {
@@ -107,7 +161,7 @@ const posts = (await getCollection('blog')).sort(
 
 <section class="post-list">
   {
-    posts.map(post => (
+    paginatedPosts.map(post => (
       <div class="post-item">
         <a href={`/blog/${post.id}/`} class="post-image">
           {post.data.heroImage && (
@@ -118,13 +172,24 @@ const posts = (await getCollection('blog')).sort(
           <a href={`/blog/${post.id}/`}>
             <h2 class="post-title">{post.data.title}</h2>
           </a>
-          <p class="post-date">
-            <FormattedDate date={post.data.pubDate} />
-          </p>
+          <p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
+          <div class="post-tags">
+            {
+              post.data.tags?.map(tag => (
+                <a href={`/tags/${tag.toLowerCase()}/`} key={tag}>#{tag}</a>
+              ))
+            }
+          </div>
           <p class="post-summary">{post.data.description}</p>
           <a href={`/blog/${post.id}/`} class="read-more">Read more →</a>
         </div>
       </div>
     ))
   }
+
+  {hasMore && (
+    <div class="load-more">
+      <a href={`?page=${Number(page) + 1}`}>Load more posts</a>
+    </div>
+  )}
 </section>
