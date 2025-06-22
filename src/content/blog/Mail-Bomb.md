@@ -4,7 +4,7 @@ pubDate: 2025-06-19
 description: "A collection of KQL queries, scripts, and automation tips to help detect and mitigate mail bomb attacks in Microsoft 365 environments."
 tags: [KQL, Threat Hunting, Mail Bomb]
 author: Mitch
-heroImage: '../../assets/mail.jpg'
+heroImage: '../../assets/mail.png'
 ---
 
 Mail bombs (email flooding attacks) are a simple but highly disruptive threat. Attackers send large volumes of email to one or more mailboxes to disrupt regular business communications, fill up quotas and delay legitimate email, conceal targeted phishing attempts and degrade mail server or security tool performance.
