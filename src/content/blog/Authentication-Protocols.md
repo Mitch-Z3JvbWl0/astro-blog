@@ -1,12 +1,11 @@
 ---
-title: "Authentication Protocols"
+title: "Authentication Protocols 101"
 pubDate: 2025-06-22
 description: "Learn the differences between Aliveness, Mutual Communication, and Data Agreement with illustrated examples and protocol flows."
 tags: [Cryptography]
 author: Mitch
 heroImage: '../../assets/Auth.png'
 ---
-
 
 # Understanding Authentication in Security Protocols
 
@@ -20,7 +19,7 @@ We'll walk through simple protocol examples, explain what guarantees they provid
 
 ---
 
-## Quick Definitions
+## 📘 Quick Definitions
 
 | Type | What You're Looking For |
 |------|--------------------------|
@@ -102,7 +101,7 @@ sequenceDiagram
     A->>B: {Kab}KAB
 ```
 
-###  Analysis
+### Analysis
 - B proposes a new session key `Kab`.
 - A accepts and confirms it.
 - ✅ They both agree on `Kab` and know the other agrees.
@@ -111,7 +110,7 @@ sequenceDiagram
 
 ---
 
-##  Example 4: Replay Attack Vulnerability
+## Example 4: Replay Attack Vulnerability
 
 ### Protocol X
 ```text
@@ -121,7 +120,7 @@ sequenceDiagram
 4. A → B: {Message}KAB
 ```
 
-### 🔁 Flowchart
+### Flowchart
 ```mermaid
 sequenceDiagram
     participant A
@@ -136,7 +135,7 @@ sequenceDiagram
 - An attacker can replay a full session.
 - B has no way to check if the message is fresh.
 
-### ✅ Fix
+### Fix
 ```text
 3. A → B: {Na, Nb}KAB  
 4. A → B: {Message, Na, Nb}KAB
@@ -155,14 +154,108 @@ This binds the final message to the current session.
 | Protocol C | Data Agreement |
 | Protocol X | ❌ Vulnerable to Replay Attack |
 
+
 ---
 
-## Final Thoughts
+## Theory Meets Practice: Authentication in Common Protocols
 
-When reviewing or designing protocols, always ask:
-1. Who proves they’re alive?
-2. Who proves they’re actively involved?
-3. Do they agree on any key or data?
+Let's now tie the theory of aliveness, mutual communication, and data agreement into real-world authentication protocols.
 
-These distinctions are critical in real-world protocol security.
+---
 
+### 🔐 NTLM (Windows Challenge-Response)
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C->>S: Username
+    S->>C: Challenge (nonce)
+    C->>S: Response = H(nonce, password)
+    S->>C: Success/Failure
+```
+
+- ✅ Aliveness (Server verifies the client)
+- ❌ No mutual communication
+- ❌ No data agreement
+- ⚠️ Vulnerable to pass-the-hash attacks
+
+---
+
+### 🔐 Kerberos (Ticket-Based Authentication)
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant AS as Auth Server
+    participant TGS as Ticket Granting Server
+    participant S as Service
+
+    C->>AS: Request TGT (A, TGS, timestamp)
+    AS->>C: TGT + session key (encrypted with C's secret)
+
+    C->>TGS: Request service ticket using TGT
+    TGS->>C: Service ticket + new session key
+
+    C->>S: {Auth data} using session key
+    S->>C: Auth OK
+```
+
+- ✅ Aliveness
+- ✅ Mutual Communication
+- ✅ Data Agreement (on session key)
+- 💡 Used in Active Directory environments
+
+---
+
+### 🔐 LDAP (Lightweight Directory Access Protocol)
+
+LDAP by itself is a directory lookup protocol. Authentication is often done via:
+
+- Simple Bind (plaintext — insecure unless wrapped in TLS)
+- SASL Bind or Kerberos-backed
+
+- ❌ No built-in cryptographic challenge
+- ⚠️ Use with LDAPS or external auth
+
+---
+
+### 🔐 RADIUS (Remote Authentication Dial-In User Service)
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant NAS as Access Server
+    participant S as RADIUS Server
+
+    C->>NAS: Login request
+    NAS->>S: {Username, credentials}
+    S->>NAS: Access Accept/Reject
+    NAS->>C: Allow/Deny
+```
+
+- ✅ Aliveness (of client)
+- ❌ No mutual authentication unless extended via EAP
+- ⚠️ Use with EAP-TLS or move to TACACS+ for command-level controls
+
+---
+
+## 📊 Comparison Table
+
+| Protocol | Aliveness | Mutual | Data Agreement | Notes |
+|----------|-----------|--------|----------------|-------|
+| NTLM     | ✅        | ❌     | ❌             | Legacy protocol, pass-the-hash vulnerable |
+| Kerberos | ✅        | ✅     | ✅             | Secure ticketing and key agreement |
+| LDAP     | ❌        | ❌     | ❌             | Needs TLS or Kerberos for security |
+| RADIUS   | ✅        | ❌     | ❌             | Pair with EAP for stronger auth |
+
+---
+
+## 🔗 Further Reading & Tools
+
+- [RFC 4120 - Kerberos V5](https://datatracker.ietf.org/doc/html/rfc4120)
+- [Wireshark NTLM & Kerberos Filters](https://wiki.wireshark.org/Kerberos)
+- [FreeRADIUS Documentation](https://wiki.freeradius.org/)
+- [Samba NTLM Auth Tools](https://wiki.samba.org/index.php/NTLM)
+
+---
