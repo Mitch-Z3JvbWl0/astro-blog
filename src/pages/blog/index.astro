@@ -86,7 +86,7 @@ const posts = (await getCollection('blog')).sort(
   <body>
     <Header />
     <main>
-      <h1 class="page-title">🔐 Cyber Security Insights & Projects</h1>
+      <h1 class="page-title">Posts & Projects</h1>
       <div class="grid">
         {posts.map((post) => (
           <a class="card" href={`/blog/${post.id}/`}>
