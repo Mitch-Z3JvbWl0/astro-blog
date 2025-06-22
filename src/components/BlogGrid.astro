@@ -176,7 +176,7 @@ const hasMore = posts.length > end;
           <div class="post-tags">
             {
               post.data.tags?.map(tag => (
-                <a href={`/tags/${tag.toLowerCase()}/`} key={tag}>#{tag}</a>
+                <a href={`/tags/${tag.toLowerCase()}/`}>#{tag}</a>
               ))
             }
           </div>
