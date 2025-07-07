@@ -1,7 +1,7 @@
 ---
 title: "Protocol Weaknesses Using Real-World Exploits"
 pubDate: 2025-07-07
-description: "This post explores real-world vulnerabilities in cryptographic protocols through clear visual breakdowns. From replay attacks and bit-string injection to Heartbleed, each flaw is explained using diagrams and real-world context, offering actionable insights for students and cybersecurity professionals."
+description: "This post explores real-world vulnerabilities in cryptographic protocols through clear visual breakdowns. From replay attacks and bit-string injection to Heartbleed, each flaw is explained using diagrams and real-world context."
 tags: [protocols, cryptography, exploits, security engineering, vulnerability analysis, heartbleed, authentication, replay attack, type-flaw, cybersecurity education
 ]
 author: Mitch
