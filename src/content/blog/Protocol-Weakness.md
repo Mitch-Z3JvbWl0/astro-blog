@@ -138,6 +138,4 @@ Always validate input fields, especially length/payload relationships in network
 
 Understanding protocol design flaws helps demystify many of the common vulnerabilities exploited today. These examples show how even small oversights — like a missing nonce or unchecked payload size — can lead to critical exploits.
 
-Let me know if you'd like a deeper breakdown of any specific protocol or want to see these attacks demonstrated in code.
-
 ---
