@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "./site-header";
 
 const projects = [
@@ -103,7 +104,14 @@ export default function Home() {
               </div>
               <div className="machine-feet"><span /><span /></div>
             </div>
-            <img className="grom-hero" src="/grom-logo.png" alt="Grom, the Grom-Lab mascot" />
+            <Image
+              className="grom-hero"
+              src="/grom-logo.png"
+              alt="Grom, the Grom-Lab mascot"
+              width={186}
+              height={240}
+              priority
+            />
             <span className="floor-cable" />
           </aside>
         </section>
