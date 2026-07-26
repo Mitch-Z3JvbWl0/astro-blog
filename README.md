@@ -1,26 +1,20 @@
-# Grom Lab
+# Grom-Lab
 
-Personal security-engineering portfolio built with Next.js.
+Mitch Hart's cybersecurity engineering portfolio, built with Next.js.
 
 ## Local development
-
-Requires Node.js 22.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
-
-## Validation
+## Production validation
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## Deploying to Vercel
-
-Import the GitHub repository into Vercel and keep the framework preset set to
-**Next.js**. The default install and build commands are sufficient.
+The repository is configured for Vercel's native Next.js deployment. Leave the
+Vercel build and output-directory settings at their framework defaults.

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export function Header() {
@@ -12,9 +11,7 @@ export function Header() {
   return (
     <header className="nav">
       <Link className="brand" href="/" aria-label="Grom Lab home">
-        <span className="brand-mark">
-          <Image src="/grom-logo.png" alt="" width={36} height={36} priority />
-        </span>
+        <span className="brand-mark"><img src="/grom-logo.png" alt="" /></span>
         <span>GROM-LAB</span>
       </Link>
       <nav aria-label="Main navigation">

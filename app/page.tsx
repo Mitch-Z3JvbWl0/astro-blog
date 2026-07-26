@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "./site-header";
 
 const projects = [
@@ -17,29 +16,29 @@ const projects = [
   },
   {
     number: "02",
-    type: "Security architecture · Delivered",
-    title: "Azure security architecture and cloud migration",
+    type: "Reference architecture · Designed",
+    title: "Project Atlas: secure Azure SaaS architecture",
     description:
-      "Architecture work spanning Azure landing zones, Zero Trust access, security monitoring and control mapping to business and regulatory requirements.",
-    tags: ["Azure", "Entra ID", "Zero Trust", "CAF"],
+      "An industry-neutral SaaS scenario translating availability, identity, data and operational requirements into a secure, testable Azure target state.",
+    tags: ["Azure", "Entra ID", "Private Link", "Architecture"],
     href: "/projects/azure-security-architecture",
   },
   {
     number: "03",
-    type: "Architecture method · Applied",
-    title: "Threat modelling security solutions",
+    type: "Threat-informed defence · Designed",
+    title: "Scattered Spider-style identity intrusion",
     description:
-      "A repeatable, vendor-agnostic method for defining assets and trust boundaries, testing abuse cases and turning findings into design requirements.",
-    tags: ["Threat modelling", "STRIDE", "Risk", "Controls"],
+      "An eight-stage attack path against Project Atlas, mapped to preventative controls, response actions and practical KQL detections.",
+    tags: ["Threat modelling", "KQL", "MITRE ATT&CK", "Identity"],
     href: "/projects/threat-modelling",
   },
   {
     number: "04",
-    type: "Security engineering · Delivered",
-    title: "Security monitoring and response engineering",
+    type: "Security engineering · Lab implementation",
+    title: "Vendor-agnostic security monitoring engineering",
     description:
-      "SIEM use cases, custom log onboarding, SOAR playbooks and incident workflows built to improve visibility and make analyst response consistent.",
-    tags: ["SIEM", "SOAR", "MITRE ATT&CK", "IR"],
+      "A working telemetry pipeline covering collection, normalisation, enrichment, stream routing, tiered retention and detection validation.",
+    tags: ["SIEM", "Telemetry", "Pipelines", "Detection"],
     href: "/projects/security-monitoring",
   },
 ];
@@ -104,14 +103,7 @@ export default function Home() {
               </div>
               <div className="machine-feet"><span /><span /></div>
             </div>
-            <Image
-              className="grom-hero"
-              src="/grom-logo.png"
-              alt="Grom, the Grom-Lab mascot"
-              width={186}
-              height={240}
-              priority
-            />
+            <img className="grom-hero" src="/grom-logo.png" alt="Grom, the Grom-Lab mascot" />
             <span className="floor-cable" />
           </aside>
         </section>
