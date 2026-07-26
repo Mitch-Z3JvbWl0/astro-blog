@@ -20,8 +20,9 @@ export const metadata: Metadata = {
     "codex-preview": "development",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/grom-logo.png",
+    shortcut: "/grom-logo.png",
+    apple: "/grom-logo.png",
   },
 };
 
